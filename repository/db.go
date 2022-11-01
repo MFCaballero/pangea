@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
 )
 
@@ -29,7 +30,8 @@ func DBGet() *sqlx.DB {
 func connectDB() *sqlx.DB {
 	username, password, databasename, databaseHost := getDBConfig()
 	//Define DB connection string
-	dbURI := fmt.Sprintf("%s:%s@(%s)/%s", username, password, databaseHost, databasename)
+	dbURI := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable", username, password, databaseHost, databasename)
+	log.Println("connection string: ", dbURI)
 	db, err := sqlx.Open("postgres", dbURI)
 	if err != nil {
 		log.Fatal(fmt.Errorf("error opening database: %w", err).Error())

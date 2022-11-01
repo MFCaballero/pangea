@@ -13,7 +13,10 @@ require github.com/gorilla/mux v1.8.0
 
 require golang.org/x/sync v0.0.0-20220513210516-0976fa681c29
 
-require github.com/rs/cors v1.8.2
+require (
+	github.com/lib/pq v1.2.0
+	github.com/rs/cors v1.8.2
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.5.4 // indirect

@@ -2,11 +2,18 @@ package appdomain
 
 import "net/http"
 
+const (
+	Admin = iota + 1
+	Priviledge
+	Regular
+)
+
 type User struct {
 	ID       uint   `json:"id"`
 	Name     string `json:"name"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
+	Role     int    `json:"role"`
 }
 
 type UserDatastore interface {

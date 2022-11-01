@@ -20,7 +20,7 @@ func main() {
 	wg.Add(1)
 
 	ctx, cancel := context.WithCancel(context.Background())
-	port := "8080"
+	port := "localhost:9081"
 	eg, egCtx := errgroup.WithContext(context.Background())
 	eg.Go(createHttpServer(port, ctx, &wg))
 
