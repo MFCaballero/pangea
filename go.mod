@@ -14,7 +14,9 @@ require github.com/gorilla/mux v1.8.0
 require golang.org/x/sync v0.0.0-20220513210516-0976fa681c29
 
 require (
-	github.com/lib/pq v1.2.0
+	github.com/alexedwards/scs/postgresstore v0.0.0-20220528130143-d93ace5be94b
+	github.com/alexedwards/scs/v2 v2.5.0
+	github.com/lib/pq v1.4.0
 	github.com/rs/cors v1.8.2
 )
 

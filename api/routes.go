@@ -11,10 +11,10 @@ func Handlers() *mux.Router {
 
 	us := service.GetUserService()
 	jv := service.GetAuthenticator()
-
+	ses := service.NewSessionManager()
 	r.HandleFunc("/register", us.CreateUser).Methods("POST")
 	r.HandleFunc("/login", us.Login).Methods("POST")
-
+	r.Use(ses.LoadAndSave)
 	s := r.PathPrefix("/auth").Subrouter()
 	s.Use(jv.JwtVerify)
 	s.HandleFunc("/user", us.FetchUsers).Methods("GET")
